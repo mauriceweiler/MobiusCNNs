@@ -99,18 +99,13 @@ All individual layers and all models are unit tested in [`unit_tests.py`](./unit
 
 **Feature fields:**
 We assume Möbius strips with a _locally flat geometry_, i.e. strips which can be thought of as being constructed by gluing two opposite ends of a rectangular flat stripe together in a twisted way.
-Feature fields are therefore discretized on a regular sampling grid on a rectangular domain of
-<img src="https://render.githubusercontent.com/render/math?math=W\times L"> pixels.
+Feature fields are therefore discretized on a regular sampling grid on a rectangular domain of $W\times L$ pixels.
 Note that this choice induces a global gauge (frame field), which is discontinuous at the cut.
 
 In practice, a neural network operates on multiple feature fields which are stacked in the channel dimension (a direct sum).
 Feature spaces are therefore characterized by their feature field multiplicities.
-For instance, one could have 10 scalar fields, 4 sign-flip fields and 8 regular feature fields, which consume in total
-<img src="https://render.githubusercontent.com/render/math?math={C=10 %2B 4 %2B (2*8)=30}"> channels.
-Denoting the batch size by
-<img src="https://render.githubusercontent.com/render/math?math=N">,
-a feature space is encoded by a tensor of shape
-<img src="https://render.githubusercontent.com/render/math?math=(N,C,W,L)">.
+For instance, one could have 10 scalar fields, 4 sign-flip fields and 8 regular feature fields, which consume in total $C=10+4+(2*8)=30$ channels.
+Denoting the batch size by $N$, a feature space is encoded by a tensor of shape $(N,C,W,L)$.
 
 The correct transformation law of the feature fields is guaranteed by the coordinate independence (steerability) of the network layers operating on it.
 
